@@ -1,0 +1,14 @@
+<% include partials/head %>
+<% include partials/header %>
+
+<%- include("partials/jumbotron", { title: "Listing page", descr: "This is kind of the main page" }) %>
+
+<div class="row justify-content-md-center">
+    <ul class="list-group col col-lg-2">
+    <% imgs.forEach(i => { %>
+        <li class="list-group-item"><a href="/product/<%= i.title %>"><%= i.title %></a></li>
+    <% }) %>
+    </ul>
+</div>
+
+<% include partials/footer %>

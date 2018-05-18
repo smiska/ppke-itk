@@ -1,0 +1,34 @@
+[
+    {
+        "author": "xy",
+        "img": "http://localhost:7000/beer.jpg",
+        "title": "yooooo",
+        "tags": ["blue", "nice"],
+        "price": 3,
+        "sold": true
+    },
+    {
+        "author": "xy2",
+        "img": "http://localhost:7000/cocktail.jpg",
+        "title": "yooooo3",
+        "tags": ["blue", "not-nice"],
+        "price": 2,
+        "sold": false
+    },
+    {
+        "author": "xy",
+        "img": "http://localhost:7000/coffee.jpg",
+        "title": "yooooo4",
+        "tags": ["red", "nice"],
+        "price": 5,
+        "sold": false
+    },
+    {
+        "author": "xy",
+        "img": "http://localhost:7000/snapsz.jpg",
+        "title": "yooooo7",
+        "tags": ["red", "nice"],
+        "price": 5,
+        "sold": false
+    }
+]

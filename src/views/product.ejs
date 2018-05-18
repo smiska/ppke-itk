@@ -1,0 +1,28 @@
+<% include partials/head %>
+<% include partials/header %>
+
+<%- include("partials/jumbotron", { title: "This is a product page", descr: "Nice one, isn't it?" }) %>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="<%= img.img %>" />
+        </div>
+        <div class="col">
+            <h4 style="text-align: center">IMG METAS</h4>
+
+            <div class="justify-content-md-center">
+                <ul class="list-group">
+                <% for (var prop in img) { %>
+                    <li class="list-group-item" style="text-align: center"><%= prop %> - <%= img[prop] %></li>
+                <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<% include partials/footer %>
