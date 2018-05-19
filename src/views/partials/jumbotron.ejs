@@ -3,11 +3,27 @@
         <h1 class="display-3"><%= title %></h1>
 
         <!-- JUST FOR PRODUCT PAGES, DISPLAY IMAGE FOR THEM -->
-        <% if (locals.product) { %>
-            <img src="" />
-        <% } %>
-
         <p><%= descr %></p>
-        <p><a class="btn btn-primary btn-lg" href="https://github.com/smiska" role="button">Learn more &raquo;</a></p>
+        <% if (locals.product) { %>
+            <p>
+                <button class="btn btn-primary btn-lg <%= img.sold ? 'disabled' : '' %> " role="button" onclick="setToSold()">
+                    <%= img.sold ? "Sold" : "Let's buy one" %> &raquo;
+                </button>
+            </p>
+
+            <script>
+                function setToSold() {
+                    fetch("<%= img.title %>", {
+                        method: 'PUT', // or 'PUT'
+                        body: JSON.stringify({ sold: true }), // data can be `string` or {object}!
+                        headers: new Headers({
+                            'Content-Type': 'application/json'
+                        })
+                    }).then(res => res.json())
+                    .catch(error => console.error('Error:', error))
+                    .then(response => console.log('Success:', response));        
+                }
+            </script>
+        <% } %>
     </div>
 </div>
