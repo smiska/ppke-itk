@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 const fs = require("fs");
 
 const fetch = require("node-fetch");
-const ejs = require("ejs");
 
 router.get("/:id", (req,res) => {
     res.locals.product = "product";
