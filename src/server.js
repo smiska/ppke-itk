@@ -29,4 +29,4 @@ app.post("/reset", (req, res) => {
     res.send("coolness")
 });
 
-app.listen(7000, () => console.log("server started"))
+app.listen(process.env.PORT || 7000, () => console.log("server started"))
