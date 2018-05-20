@@ -17,7 +17,7 @@ router.get("/:id", (req,res) => {
     res.render("product", { img: img });
 });
 
-router.put("/:id", (req,res) => {
+router.put("/:id", (req,res, next) => {
     const putImgName = req.params.id;
 
     const imgToUpdate = imgs.findIndex(img => {
@@ -25,17 +25,18 @@ router.put("/:id", (req,res) => {
     });
 
     imgs[imgToUpdate].sold = req.body.sold;
+
+    req.imgToReRender = imgs[imgToUpdate];
+
     fs.writeFile("./db.json", JSON.stringify(imgs, null, 2), "utf8", (err) => {
         if (err) throw err;
         console.log('The file has been saved!');
-    })
+    });
 
-    res.status(200).send(JSON.stringify(imgs[imgToUpdate]));
-    // const img = imgs.find(img => {
-    //     return img.title === imgName; 
-    // });
-
-    // res.render("product", { img: img });
+    next();
+}, (req, res, next) => { 
+    // res.status(200).send(JSON.stringify(req.imgToReRender));
+    res.render("product", { img: req.imgToReRender });
 });
 
 

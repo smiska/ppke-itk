@@ -19,9 +19,32 @@
                         headers: new Headers({
                             'Content-Type': 'application/json'
                         })
-                    }).then(res => res.json())
+                    })
                     .catch(error => console.error('Error:', error))
-                    .then(response => console.log('Success:', response));        
+                    .then(res => console.error('Success:', res));        
+                }
+            </script>
+        <% } %>
+
+        <% if (locals.listing) { %>
+                <button id="resetButton" class="btn btn-primary btn-lg" onclick="reset()">Reset DB</button>                
+            <script>
+                function reset(params) {
+                    const XHR = new XMLHttpRequest();
+                    XHR.open("POST", "/reset");
+                    XHR.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            const button = document.getElementById("resetButton");
+                            let buttonText = button.innerHTML;
+                            button.innerHTML = "Resetting...";
+
+                            setTimeout(() => {
+                                button.innerHTML  = buttonText
+                            }, 3000);
+                        }
+                    };
+                    XHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    XHR.send("");
                 }
             </script>
         <% } %>
